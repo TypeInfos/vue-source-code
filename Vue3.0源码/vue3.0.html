@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <body>
+    <div id='app'>
+      {{ state.arr }}
+    </div>
+  </body>
+  <script src="vue-next.js"></script>
+  <script>
+    const { createApp, reactive } = Vue;
+
+    const RootComponent = {
+      template: `
+      <div>
+          <button @click="increment">
+   Count is: {{ state.count }}
+  </button>
+  {{ state.arr }}
+        </div>
+
+ `,
+      setup() {
+        const state = reactive({
+          count: 0,
+          arr: [1,2]
+        })
+
+        function increment() {
+          state.arr[state.arr.length] = state.arr.length
+          state.count++
+        }
+
+        return {
+          state,
+          increment
+        }
+      }
+    }
+
+    createApp().mount(RootComponent, '#app')
+  </script>
+
+</html>

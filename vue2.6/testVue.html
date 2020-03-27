@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <p v-for="item in arr">{{item}}</p>
+    </div>
+    <script>
+        var app = new Vue({
+            el:'#app',
+            data: {
+                message: 1232,
+                code: 1,
+                arr:[1,3]
+            },
+            watch:{
+                message(newVal, oldVal) {
+                    console.log(newVal, oldVal)
+                },
+                code(value){
+                    console.log('t:', value)
+                }
+            },
+            methods:{
+                onClick() {
+                    this.$nextTick(() => console.log(this.$refs.code))
+                    this.message = 'chenjinhuo'
+                    this.code = '123123'
+                }
+            }
+        })
+    </script>
+</body>
+</html>
